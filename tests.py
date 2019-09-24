@@ -1,4 +1,4 @@
-import math_lib.py
+import math_lib
 import unittest
 import os
 import random
@@ -21,3 +21,7 @@ class Test_Math_Lib(unittest.TestCase):
 
     def test_mean_mixed_list(self):
         self.assertEqual(math_lib.list_mean(['a', 2, 'c', '4']), 3)
+
+
+if __name__ == '__main__':
+    unittest.main()
