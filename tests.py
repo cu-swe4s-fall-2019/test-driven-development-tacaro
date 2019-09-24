@@ -61,6 +61,13 @@ class Test_Math_Lib(unittest.TestCase):
         self.assertAlmostEqual(math_lib.list_stdev(self.direct_compute_array),
                                             self.direct_std_val)
 
+'''
+class Test_Get_Data(unittest.TestCase):
+
+    def test_file_nonexistent(self):
+        with self.assertRaises(ValueError):
+            get_data.read_stdin_col()
+'''
 
 if __name__ == '__main__':
     unittest.main()
