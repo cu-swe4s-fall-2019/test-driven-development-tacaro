@@ -1,6 +1,6 @@
 
 def list_mean(L):
-    
+
     """
     Compute the arithmetic mean of an array
     Parameters
@@ -14,10 +14,11 @@ def list_mean(L):
         The arithmetic mean of array L
     """
 
+    if L is None:
+        raise ValueError("Can't give the mean of None!")
+
     if len(L) < 1:
         raise ValueError("Can't give the mean of zero values!")
-    elif L is None:
-        raise ValueError("Can't give the mean of None!")
 
     good_vals = []
     bad_vals = []
@@ -25,7 +26,10 @@ def list_mean(L):
     for i in L:
         try:
             k = int(i) # a temp variable, checks if i is float or int
-            good_vals.append(i)
+            if type(i) is str:
+                good_vals.append(float(i))
+            else:
+                good_vals.append(i)
         except ValueError:
             bad_vals.append(i)
             continue
@@ -33,6 +37,9 @@ def list_mean(L):
     if len(bad_vals) > 0:
         print("These values are non-numerical and excluded from mean")
         print(bad_vals)
+
+    if len(good_vals) < 1:
+        raise ValueError("No int or float values accepted :(")
 
     mn = sum(good_vals)/len(good_vals)
     return mn
@@ -74,7 +81,9 @@ def list_stdev(L):
         print("These values are non-numerical and excluded from stdev")
         print(bad_vals)
 
+    if len(good_vals) < 1:
+        raise ValueError("No int or float values accepted :(")
+
     st = math.sqrt(sum([(mean(good_vals)-x)**2 for x in good_vals]) /
                     len(good_vals))
     return st
-
