@@ -1,3 +1,8 @@
+import sys
+import math
+import argparse
+import unittest
+
 
 def list_mean(L):
 
@@ -58,13 +63,14 @@ def list_stdev(L):
         Standard deviation of the values in L
 
     """
+    if L is None:
+        raise ValueError("Can't give the mean of None!")
 
     if len(L) < 1:
         raise ValueError("Can't give the stdev of zero values!")
     elif len(L) < 2:
         raise ValueError("Need more than two data for stdev!")
-    elif L is None:
-        raise ValueError("Can't give the mean of None!")
+
 
     good_vals = []
     bad_vals = []
@@ -72,7 +78,10 @@ def list_stdev(L):
     for i in L:
         try:
             k = int(i) # a temp variable, checks if i is float or int
-            good_vals.append(i)
+            if type(i) is str:
+                good_vals.append(float(i))
+            else:
+                good_vals.append(i)
         except ValueError:
             bad_vals.append(i)
             continue
@@ -84,6 +93,6 @@ def list_stdev(L):
     if len(good_vals) < 1:
         raise ValueError("No int or float values accepted :(")
 
-    st = math.sqrt(sum([(mean(good_vals)-x)**2 for x in good_vals]) /
+    st = math.sqrt(sum([(list_mean(good_vals)-x)**2 for x in good_vals]) /
                     len(good_vals))
     return st
