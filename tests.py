@@ -55,7 +55,7 @@ class Test_Math_Lib(unittest.TestCase):
             math_lib.list_stdev(['a','b','c'])
 
     def test_stdev_mixed_list(self):
-        self.assertEqual(math_lib.list_stdev(['a', 2, 'c', '4']), 1)
+        self.assertEqual(math_lib.list_stdev(['a', 2, 'c', '4', 'd']), 1)
 
     def test_mean_rand_ints(self):
         self.assertAlmostEqual(math_lib.list_stdev(self.direct_compute_array),
