@@ -3,7 +3,6 @@ import math
 import argparse
 
 
-
 def list_mean(L):
 
     """
@@ -30,7 +29,7 @@ def list_mean(L):
 
     for i in L:
         try:
-            k = int(i) # a temp variable, checks if i is float or int
+            k = int(i)  # a temp variable, checks if i is float or int
             if type(i) is str:
                 good_vals.append(float(i))
             else:
@@ -48,6 +47,7 @@ def list_mean(L):
 
     mn = sum(good_vals)/len(good_vals)
     return mn
+
 
 def list_stdev(L):
     """
@@ -71,13 +71,12 @@ def list_stdev(L):
     elif len(L) < 2:
         raise ValueError("Need more than two data for stdev!")
 
-
     good_vals = []
     bad_vals = []
 
     for i in L:
         try:
-            k = int(i) # a temp variable, checks if i is float or int
+            k = int(i)  # a temp variable, checks if i is float or int
             if type(i) is str:
                 good_vals.append(float(i))
             else:
@@ -94,5 +93,5 @@ def list_stdev(L):
         raise ValueError("No int or float values accepted :(")
 
     st = math.sqrt(sum([(list_mean(good_vals)-x)**2 for x in good_vals]) /
-                    len(good_vals))
+                   len(good_vals))
     return st
