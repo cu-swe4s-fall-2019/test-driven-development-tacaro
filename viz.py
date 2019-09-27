@@ -29,17 +29,18 @@ def main():
     type = args.plot_type
 
     x = gt.read_stdin_col(0)
-    print(x)
+    #print(x)
     y = gt.read_stdin_col(1)
-    print(y)
-    f = np.column_stack((x,y))
+    #print(y)
+    combined = np.vstack((x,y)).T
+    combined = combined.tolist()
 
     if type == "hist":
-        dv.histogram(f, out_file)
+        dv.histogram(combined, file_out)
     if type == "box":
-        dv.boxplot(f, out_file)
+        dv.boxplot(combined, file_out)
     if type == "combo":
-        dv.combo(f, out_file)
+        dv.combo(combined, file_out)
 
 if __name__ == '__main__':
     main()
