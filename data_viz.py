@@ -10,9 +10,8 @@ def boxplot(L, out_file_name):
     x = []
     y = []
     for l in L:
-        A = l.rstrip().split()
-        x.append(float(A[0]))
-        y.append(float(A[1]))
+        x.append(float(l[0]))
+        y.append(float(l[1]))
 
     stat_mean = str(ml.list_mean(y))
     stat_stdev = str(ml.list_stdev(y))
@@ -29,10 +28,12 @@ def boxplot(L, out_file_name):
 
 def histogram(L, out_file_name):
     D = []
+    y = []
     for l in L:
-        A = l.rstrip().split()
-        D.append(float(A[0]))
-        D.append(float(A[1]))
+        D.append(float(l[0]))
+        D.append(float(l[1]))
+        y.append(float(l[1]))
+
 
     width = 3
     height = 3
@@ -51,11 +52,10 @@ def combo(L, out_file_name):
     y = []
 
     for l in L:
-        A = l.rstrip().split()
-        D.append(float(A[0]))
-        D.append(float(A[1]))
-        x.append(float(A[0]))
-        y.append(float(A[1]))
+        D.append(float(l[0]))
+        D.append(float(l[1]))
+        x.append(float(l[0]))
+        y.append(float(l[1]))
 
     stat_mean = str(ml.list_mean(y))
     stat_stdev = str(ml.list_stdev(y))

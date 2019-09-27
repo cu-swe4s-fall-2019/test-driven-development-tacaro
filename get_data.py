@@ -1,19 +1,15 @@
 import sys
 import os
 import math
+import numpy as np
 
-
-
+a = np.loadtxt(sys.stdin, dtype=np.int)
 def read_stdin_col(col_num):
-    A = []
-    V = []
-    for l in sys.stdin:
-        A = [x for x in l.split()]
-        V.append(int(A[col_num]))
-    return V
+    return a[:, col_num]
 
-#def main():
-    #print(read_stdin_col(0))
+def main():
+    print(read_stdin_col(0))
+    print(read_stdin_col(1))
 
-#if __name__ == '__main__':
-    #main()
+if __name__ == '__main__':
+    main()
