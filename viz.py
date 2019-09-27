@@ -29,10 +29,10 @@ def main():
     type = args.plot_type
 
     x = gt.read_stdin_col(0)
-    #print(x)
+
     y = gt.read_stdin_col(1)
-    #print(y)
-    combined = np.vstack((x,y)).T
+
+    combined = np.vstack((x, y)).T
     combined = combined.tolist()
 
     if type == "hist":
@@ -41,6 +41,7 @@ def main():
         dv.boxplot(combined, file_out)
     if type == "combo":
         dv.combo(combined, file_out)
+
 
 if __name__ == '__main__':
     main()

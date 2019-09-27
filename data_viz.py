@@ -4,8 +4,8 @@ from os import path
 import sys
 import matplotlib
 import math_lib as ml
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 
 
 def boxplot(L, out_file_name):
@@ -23,7 +23,6 @@ def boxplot(L, out_file_name):
     except TypeError:
         print("Can't plot 1D data!")
 
-
     x = []
     y = []
     for l in L:
@@ -35,9 +34,9 @@ def boxplot(L, out_file_name):
     width = 3
     height = 3
 
-    fig = plt.figure(figsize=(width, height), dpi = 300)
-    ax = fig.add_subplot(1,1,1)
-    ax.boxplot(x,y,'.')
+    fig = plt.figure(figsize=(width, height), dpi=300)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.boxplot(x, y, '.')
     plt.title("Mean: " + stat_mean + " " + "stdev: " + stat_stdev)
     plt.ylabel('Frequency')
     plt.savefig(out_file_name, bbox_inches='tight')
@@ -66,17 +65,17 @@ def histogram(L, out_file_name):
         D.append(float(l[1]))
         y.append(float(l[1]))
 
-
     width = 3
     height = 3
     stat_mean = str(ml.list_mean(y))
     stat_stdev = str(ml.list_stdev(y))
     fig = plt.figure(figsize=(width, height), dpi=300)
-    ax = fig.add_subplot(1,1,1)
+    ax = fig.add_subplot(1, 1, 1)
     ax.hist(D)
     plt.title("Mean: " + stat_mean + " " + "stdev: " + stat_stdev)
     plt.ylabel('Frequency')
-    plt.savefig(out_file_name,bbox_inches='tight')
+    plt.savefig(out_file_name, bbox_inches='tight')
+
 
 def combo(L, out_file_name):
     if path.exists(out_file_name):
@@ -110,11 +109,11 @@ def combo(L, out_file_name):
     width = 5
     height = 3
 
-    fig = plt.figure(figsize=(width, height), dpi = 300)
-    ax = fig.add_subplot(1,2,1)
-    ax.boxplot(x,y,'.')
-    ax = fig.add_subplot(1,2,2)
+    fig = plt.figure(figsize=(width, height), dpi=300)
+    ax = fig.add_subplot(1, 2, 1)
+    ax.boxplot(x, y, '.')
+    ax = fig.add_subplot(1, 2, 2)
     ax.hist(D)
     plt.title("Mean: " + stat_mean + " " + "stdev: " + stat_stdev)
     plt.ylabel('Frequency')
-    plt.savefig(out_file_name,bbox_inches='tight')
+    plt.savefig(out_file_name, bbox_inches='tight')
