@@ -1,4 +1,6 @@
 import math
+import os
+from os import path
 import sys
 import matplotlib
 import math_lib as ml
@@ -7,6 +9,21 @@ import matplotlib.pyplot as plt
 
 
 def boxplot(L, out_file_name):
+    if path.exists(out_file_name):
+        raise OSError("File path already exists!")
+        sys.exit(1)
+    if L is None:
+        raise ValueError("Can't graph None!")
+
+    if L == []:
+        raise ValueError("Can't graph an empty list!")
+    try:
+        for line in L:
+            k = line[1]
+    except TypeError:
+        print("Can't plot 1D data!")
+
+
     x = []
     y = []
     for l in L:
@@ -27,6 +44,21 @@ def boxplot(L, out_file_name):
 
 
 def histogram(L, out_file_name):
+    if path.exists(out_file_name):
+        raise OSError("File path already exists!")
+        sys.exit(1)
+    if L is None:
+        raise ValueError("Can't graph None!")
+
+    if L == []:
+        raise ValueError("Can't graph an empty list!")
+
+    try:
+        for line in L:
+            k = line[1]
+    except TypeError:
+        print("Can't plot 1D data!")
+
     D = []
     y = []
     for l in L:
@@ -47,6 +79,22 @@ def histogram(L, out_file_name):
     plt.savefig(out_file_name,bbox_inches='tight')
 
 def combo(L, out_file_name):
+    if path.exists(out_file_name):
+        raise OSError("File path already exists!")
+        sys.exit(1)
+
+    if L is None:
+        raise ValueError("Can't graph None!")
+
+    if L == []:
+        raise ValueError("Can't graph an empty list!")
+
+    try:
+        for line in L:
+            k = line[1]
+    except TypeError:
+        print("Can't plot 1D data!")
+
     D = []
     x = []
     y = []
