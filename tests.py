@@ -64,7 +64,6 @@ class Test_Math_Lib(unittest.TestCase):
         self.assertAlmostEqual(math_lib.list_stdev(self.direct_compute_array),
                                             self.direct_std_val)
 
-# Test_Get_Data was deleted: testing this is no longer part of the assignment
 
 class Test_Data_Viz(unittest.TestCase):
     """Tests data_viz.py functionality"""
@@ -87,6 +86,41 @@ class Test_Data_Viz(unittest.TestCase):
         with self.assertRaises(OSError):
             data_viz.combo([1,2,3,4], 'already.png')
 
+    def test_combo_none_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.combo(None, 'novel.png')
+
+    def test_combo_empty_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.combo([], 'novel.png')
+
+    def test_hist_empty_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.histogram([], 'novel.png')
+
+    def test_hist_none_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.histogram(None, 'novel.png')
+
+    def test_box_none_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.boxplot(None, 'novel.png')
+
+    def test_box_empty_list(self):
+        with self.assertRaises(ValueError):
+            data_viz.boxplot([], 'novel.png')
+
+    def test_box_1d(self):
+        with self.assertRaises(TypeError):
+            data_viz.boxplot([1,2,3], 'novel.png')
+
+    def test_hist_1d(self):
+        with self.assertRaises(TypeError):
+            data_viz.histogram([1,2,3], 'novel.png')
+
+    def test_combo_1d(self):
+        with self.assertRaises(TypeError):
+            data_viz.combo([1,2,3], 'novel.png')
 
 if __name__ == '__main__':
     unittest.main()
