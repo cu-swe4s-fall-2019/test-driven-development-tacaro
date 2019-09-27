@@ -1,9 +1,12 @@
 import math_lib
+import data_viz
 import unittest
 import os
 import random
 import decimal
 import statistics
+from PIL import Image
+import numpy as np
 
 class Test_Math_Lib(unittest.TestCase):
     """A set of unit tests for math_lib"""
@@ -61,13 +64,29 @@ class Test_Math_Lib(unittest.TestCase):
         self.assertAlmostEqual(math_lib.list_stdev(self.direct_compute_array),
                                             self.direct_std_val)
 
-'''
-class Test_Get_Data(unittest.TestCase):
+# Test_Get_Data was deleted: testing this is no longer part of the assignment
 
-    def test_file_nonexistent(self):
-        with self.assertRaises(ValueError):
-            get_data.read_stdin_col()
-'''
+class Test_Data_Viz(unittest.TestCase):
+    """Tests data_viz.py functionality"""
+
+    def setUp(self):
+        already = Image.new('RGB', (1,1))
+        already.save('already.png', "PNG")
+        data2 = np.array([[1,3],[5,9]])
+        np.savetxt('data2.txt', data2, delimiter=',')
+
+    def test_boxplot_already_exists(self):
+        with self.assertRaises(OSError):
+            data_viz.boxplot([1,2,3,4], 'already.png')
+
+    def test_hist_already_exists(self):
+        with self.assertRaises(OSError):
+            data_viz.histogram([1,2,3,4], 'already.png')
+
+    def test_combo_already_exists(self):
+        with self.assertRaises(OSError):
+            data_viz.combo([1,2,3,4], 'already.png')
+
 
 if __name__ == '__main__':
     unittest.main()
