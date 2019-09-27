@@ -13,4 +13,8 @@ before_install:
       
 script:
     - bash test_viz.sh
-    - python test_viz.py
+    - python tests.py
+    - pycodestyle tests.py
+    - pycodestyle viz.py
+    - pycodestyle get_data.py
+    - pycodestyle data_viz.py
